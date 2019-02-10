@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+  creationTimestamp: 2019-02-10T13:32:58Z
+  generation: 1
+  name: tls-example-ingress
+  namespace: default
+  resourceVersion: "8279467"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/tls-example-ingress
+  uid: 61619ade-2d38-11e9-8765-0a58ac1f0638
+spec:
+  rules:
+  - host: testhttps.com
+    http:
+      paths:
+      - backend:
+          serviceName: sslnginx
+          servicePort: 8124
+        path: /
+  tls:
+  - hosts:
+    - testhttps.com
+status:
+  loadBalancer:
+    ingress:
+    - ip: 52.166.2.130
